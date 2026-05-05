@@ -1,0 +1,170 @@
+┌──(vmsin0㉿martian)-[~/…/Manual/DSBDA/EXP11/words]
+└─$ hadoop jar words.jar WordCount /input/input1.txt /out321 
+26/03/29 12:11:37 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+26/03/29 12:11:38 INFO input.FileInputFormat: Total input paths to process : 1
+26/03/29 12:11:38 INFO mapreduce.JobSubmitter: number of splits:1
+26/03/29 12:11:38 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1774765935636_0001
+26/03/29 12:11:38 INFO impl.YarnClientImpl: Submitted application application_1774765935636_0001
+26/03/29 12:11:38 INFO mapreduce.Job: The url to track the job: http://martian:8088/proxy/application_1774765935636_0001/
+26/03/29 12:11:38 INFO mapreduce.Job: Running job: job_1774765935636_0001
+26/03/29 12:11:45 INFO mapreduce.Job: Job job_1774765935636_0001 running in uber mode : false
+26/03/29 12:11:45 INFO mapreduce.Job:  map 0% reduce 0%
+26/03/29 12:11:50 INFO mapreduce.Job:  map 100% reduce 0%
+26/03/29 12:11:56 INFO mapreduce.Job:  map 100% reduce 100%
+26/03/29 12:11:56 INFO mapreduce.Job: Job job_1774765935636_0001 completed successfully
+26/03/29 12:11:56 INFO mapreduce.Job: Counters: 49
+        File System Counters
+                FILE: Number of bytes read=1248
+                FILE: Number of bytes written=241617
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=944
+                HDFS: Number of bytes written=858
+                HDFS: Number of read operations=6
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+        Job Counters 
+                Launched map tasks=1
+                Launched reduce tasks=1
+                Data-local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=2395
+                Total time spent by all reduces in occupied slots (ms)=3601
+                Total time spent by all map tasks (ms)=2395
+                Total time spent by all reduce tasks (ms)=3601
+                Total vcore-milliseconds taken by all map tasks=2395
+                Total vcore-milliseconds taken by all reduce tasks=3601
+                Total megabyte-milliseconds taken by all map tasks=2452480
+                Total megabyte-milliseconds taken by all reduce tasks=3687424
+        Map-Reduce Framework
+                Map input records=1
+                Map output records=140
+                Map output bytes=1401
+                Map output materialized bytes=1248
+                Input split bytes=103
+                Combine input records=140
+                Combine output records=96
+                Reduce input groups=96
+                Reduce shuffle bytes=1248
+                Reduce input records=96
+                Reduce output records=96
+                Spilled Records=192
+                Shuffled Maps =1
+                Failed Shuffles=0
+                Merged Map outputs=1
+                GC time elapsed (ms)=137
+                CPU time spent (ms)=1420
+                Physical memory (bytes) snapshot=460808192
+                Virtual memory (bytes) snapshot=3774468096
+                Total committed heap usage (bytes)=348651520
+        Shuffle Errors
+                BAD_ID=0
+                CONNECTION=0
+                IO_ERROR=0
+                WRONG_LENGTH=0
+                WRONG_MAP=0
+                WRONG_REDUCE=0
+        File Input Format Counters 
+                Bytes Read=841
+        File Output Format Counters 
+                Bytes Written=858
+                                                                                                                                       
+┌──(vmsin0㉿martian)-[~/…/Manual/DSBDA/EXP11/words]
+└─$ hadoop fs -cat /out321/part-r-00000
+1870s   1
+1880s   1
+1884,   1
+1888,   1
+AC      2
+Austrian        1
+Born    1
+City    1
+Continental     1
+Edison  2
+Electric        1
+Empire, 1
+He      2
+His     1
+In      1
+Machine 1
+New     2
+States, 1
+Tesla   2
+United  1
+Westinghouse    2
+With    1
+Works   1
+York    2
+a       5
+amount  1
+and     8
+at      2
+became  2
+before  1
+by      1
+citizen.        1
+companies       1
+considerable    1
+cornerstone     1
+degree. 1
+develop 1
+devices.        1
+early   1
+earned  1
+electric        1
+electrical      1
+engineering     1
+experience      1
+finance 1
+first   1
+for     1
+gained  1
+he      3
+help    1
+him     1
+his     2
+ideas,  1
+in      8
+induction       1
+industry.       1
+laboratories    1
+licensed        1
+market  1
+marketed.       1
+mechanical      1
+migrated        1
+money   1
+motor   1
+naturalized     1
+new     1
+of      4
+on      1
+out     1
+own.    1
+partners        1
+patents,        1
+physics 1
+polyphase       2
+power   1
+practical       1
+raised  1
+range   1
+receiving       1
+related 1
+set     1
+short   1
+struck  1
+studied 1
+system, 1
+telephony       1
+the     9
+then    1
+time    1
+to      3
+up      1
+where   1
+which   1
+without 1
+worked  1
+working 1
+
