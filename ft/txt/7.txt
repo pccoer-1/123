@@ -1,0 +1,732 @@
+
+# ✅ 1. START FROM ZERO (ABSOLUTE BASICS)
+
+## 🔹 What is NLP?
+
+NLP = **Natural Language Processing**
+
+👉 Computer understands human language
+
+Examples:
+
+* ChatGPT
+* Google Translate
+* Spam detection
+
+---
+
+## 🔹 What is Text Processing?
+
+👉 Converting text → useful format
+
+Example:
+
+```text
+"I am learning Python"
+→ ["learning", "Python"]
+```
+
+---
+
+## 🔹 What this experiment includes:
+
+1. PDF reading
+2. Word file creation
+3. Tokenization
+4. Stopword removal
+5. Stemming
+6. Lemmatization
+7. TF-IDF
+
+---
+
+# ✅ 2. WHAT THIS EXPERIMENT DOES
+
+### 🎯 Aim:
+
+1. Extract text from files
+2. Process text
+3. Clean text
+4. Convert text → numerical features
+
+---
+
+### 🌍 Real-world Use:
+
+* Chatbots
+* Search engines
+* Text classification
+* Recommendation systems
+
+---
+
+# ✅ 3. FULL CODE (WORD-BY-WORD EXPLANATION)
+
+---
+
+# 🔹 Install Libraries
+
+```python
+pip install PyPDF2
+```
+
+* PDF reading library
+
+---
+
+```python
+pip install python-docx
+```
+
+* Word document library
+
+---
+
+# 🔹 Upload File
+
+```python
+from google.colab import files
+uploaded = files.upload()
+```
+
+👉 Upload PDF/image
+
+---
+
+```python
+if uploaded:
+    print("Success")
+```
+
+---
+
+# 🔹 PDF Reading
+
+```python
+import PyPDF2
+```
+
+👉 Import PDF library
+
+---
+
+```python
+pdfFileObj = open('/content/sample.pdf', 'rb')
+```
+
+### Word-by-word:
+
+* `open()` → open file
+* `'rb'` → read binary
+
+---
+
+```python
+pdfReader = PyPDF2.PdfReader(pdfFileObj)
+```
+
+👉 Create reader object
+
+---
+
+```python
+print(len(pdfReader.pages))
+```
+
+👉 Number of pages
+
+---
+
+```python
+pageObj = pdfReader.pages[0]
+```
+
+👉 First page
+
+---
+
+```python
+print(pageObj.extract_text())
+```
+
+👉 Extract text
+
+---
+
+```python
+pdfFileObj.close()
+```
+
+👉 Close file
+
+---
+
+👉 From **page 1 output**:
+Text extracted from PDF successfully
+
+---
+
+# 🔹 Word Document Creation
+
+```python
+import docx
+```
+
+👉 Import Word module
+
+---
+
+```python
+doc = docx.Document()
+```
+
+👉 Create document
+
+---
+
+```python
+doc.add_heading('Heading', 0)
+```
+
+👉 Add title
+
+---
+
+```python
+doc_para = doc.add_paragraph('Your paragraph')
+```
+
+👉 Add paragraph
+
+---
+
+```python
+doc_para.add_run('bold').bold = True
+```
+
+👉 Bold text
+
+---
+
+```python
+doc.add_picture("index.jpg")
+```
+
+👉 Add image
+
+---
+
+```python
+doc.save('new_doc')
+```
+
+👉 Save file
+
+---
+
+# 🔹 NLTK Setup
+
+```python
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+```
+
+👉 Download tools
+
+---
+
+# 🔹 Sentence Tokenization
+
+```python
+sentence_data = "The First sentence is about Python..."
+nltk.sent_tokenize(sentence_data)
+```
+
+👉 Break into sentences
+
+Output:
+
+```text
+["Sentence 1", "Sentence 2"]
+```
+
+---
+
+# 🔹 Word Tokenization
+
+```python
+nltk.word_tokenize(text)
+```
+
+👉 Break into words
+
+---
+
+👉 From **page 3 output**:
+
+```text
+['It', 'originated', 'from', ...]
+```
+
+---
+
+# 🔹 POS Tagging
+
+```python
+nltk.pos_tag(text)
+```
+
+👉 Identify grammar
+
+Example:
+
+```text
+NN → noun
+VB → verb
+```
+
+---
+
+# 🔹 Stopwords
+
+```python
+from nltk.corpus import stopwords
+```
+
+👉 Common useless words
+
+Example:
+
+```text
+is, the, a, an
+```
+
+---
+
+```python
+filtered = [w for w in words if not w in stop_words]
+```
+
+👉 Remove them
+
+---
+
+👉 From **page 4 output**:
+
+```text
+Before → ['This','is','a','sample']
+After → ['This','sample']
+```
+
+---
+
+# 🔹 File Stopword Removal
+
+```python
+file1 = open("text.txt")
+line = file1.read()
+```
+
+👉 Read file
+
+---
+
+```python
+if not word in stop_words:
+```
+
+👉 Remove stopwords
+
+---
+
+# 🔹 Stemming
+
+```python
+from nltk.stem.porter import PorterStemmer
+```
+
+👉 Root word extraction
+
+---
+
+Example (page 4–5):
+
+```text
+vijaying → vijay
+meeting → meet
+skills → skill
+```
+
+---
+
+# 🔹 Lemmatization
+
+```python
+from nltk.stem import WordNetLemmatizer
+```
+
+👉 More accurate root
+
+---
+
+Example:
+
+```text
+studies → study
+skills → skill
+```
+
+---
+
+# 🔹 TF-IDF (VERY IMPORTANT)
+
+---
+
+## 🔹 Step 1: Split Sentences
+
+```python
+first_sentence.split(" ")
+```
+
+👉 Convert to words
+
+---
+
+## 🔹 Step 2: Unique Words
+
+```python
+total = set(first_sentence).union(set(second_sentence))
+```
+
+👉 All unique words
+
+---
+
+## 🔹 Step 3: Count Words
+
+```python
+wordDictA = dict.fromkeys(total, 0)
+```
+
+👉 Initialize dictionary
+
+---
+
+```python
+wordDictA[word] += 1
+```
+
+👉 Count frequency
+
+---
+
+👉 From **page 6 table**:
+👉 Shows word counts
+
+---
+
+## 🔹 Step 4: Term Frequency (TF)
+
+```python
+tf = count / total_words
+```
+
+---
+
+## 🔹 Step 5: IDF
+
+```python
+idf = log(N / (count+1))
+```
+
+---
+
+## 🔹 Step 6: TF-IDF
+
+```python
+tfidf = tf * idf
+```
+
+---
+
+👉 From **page 6 image**:
+👉 Values computed for each word
+
+---
+
+# 🔹 Using sklearn
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+```
+
+---
+
+```python
+vectorize = TfidfVectorizer()
+response = vectorize.fit_transform([text1, text2])
+```
+
+👉 Converts text → matrix
+
+---
+
+👉 From **page 7 output**:
+👉 Sparse matrix created
+
+---
+
+# ✅ 4. CORE CONCEPTS (CLEAR)
+
+---
+
+## 🔹 Tokenization
+
+Split text into parts
+
+---
+
+## 🔹 Stopwords
+
+Remove unnecessary words
+
+---
+
+## 🔹 Stemming
+
+Cut word to root
+
+---
+
+## 🔹 Lemmatization
+
+Proper root word
+
+---
+
+## 🔹 TF-IDF
+
+```text
+TF → importance in document
+IDF → rarity in corpus
+```
+
+---
+
+# ✅ 5. OUTPUT UNDERSTANDING
+
+---
+
+### PDF:
+
+Text extracted
+
+---
+
+### Tokenization:
+
+Sentence → words
+
+---
+
+### Stopwords:
+
+Reduced text
+
+---
+
+### Stemming/Lemmatization:
+
+Words simplified
+
+---
+
+### TF-IDF:
+
+Numeric representation
+
+---
+
+# ⚠ Common Mistakes
+
+1. Forgetting downloads in nltk
+2. Confusing stemming vs lemmatization
+3. Not converting text properly
+4. Ignoring stopwords
+5. Case sensitivity in TF-IDF
+
+---
+
+# ✅ 6. VIVA QUESTIONS (DETAILED)
+
+---
+
+### 1. What is NLP?
+
+Processing human language.
+
+---
+
+### 2. What is tokenization?
+
+Splitting text.
+
+---
+
+### 3. What is stopword?
+
+Common useless word.
+
+---
+
+### 4. What is stemming?
+
+Cutting word to root.
+
+---
+
+### 5. What is lemmatization?
+
+Accurate root extraction.
+
+---
+
+### 6. Difference between stemming and lemmatization?
+
+Stemming → rough, Lemmatization → accurate.
+
+---
+
+### 7. What is TF?
+
+Word frequency.
+
+---
+
+### 8. What is IDF?
+
+Word importance.
+
+---
+
+### 9. What is TF-IDF?
+
+TF × IDF.
+
+---
+
+### 10. What is POS tagging?
+
+Grammar tagging.
+
+---
+
+### 11. What is corpus?
+
+Collection of text.
+
+---
+
+### 12. What is vectorization?
+
+Text → numbers.
+
+---
+
+### 13. What is sparse matrix?
+
+Mostly zeros.
+
+---
+
+### 14. What is NLTK?
+
+NLP library.
+
+---
+
+### 15. What is PyPDF2?
+
+PDF reader.
+
+---
+
+### 16. What is python-docx?
+
+Word file handler.
+
+---
+
+### 17. Why remove stopwords?
+
+Reduce noise.
+
+---
+
+### 18. What is feature extraction?
+
+Convert data to features.
+
+---
+
+### 19. What is bag of words?
+
+Word count representation.
+
+---
+
+### 20. Real-world use?
+
+Search engines, chatbots.
+
+---
+
+# ✅ 7. CLEAN PYTHON IMPLEMENTATION
+
+```python
+import PyPDF2
+import docx
+import nltk
+from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+from nltk.stem import WordNetLemmatizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+import math
+import pandas as pd
+
+pdfFileObj = open('sample.pdf', 'rb')
+pdfReader = PyPDF2.PdfReader(pdfFileObj)
+pageObj = pdfReader.pages[0]
+print(pageObj.extract_text())
+pdfFileObj.close()
+
+doc = docx.Document()
+doc.add_heading('Heading', 0)
+doc.add_paragraph('Sample paragraph')
+doc.save('new_doc')
+
+sentence = "This is a sample sentence"
+print(sent_tokenize(sentence))
+print(word_tokenize(sentence))
+
+stop_words = set(stopwords.words('english'))
+words = word_tokenize(sentence)
+filtered = [w for w in words if not w in stop_words]
+
+porter = PorterStemmer()
+for w in words:
+    print(porter.stem(w))
+
+lemmatizer = WordNetLemmatizer()
+for w in words:
+    print(lemmatizer.lemmatize(w))
+
+vectorizer = TfidfVectorizer()
+response = vectorizer.fit_transform(["data science", "machine learning"])
+print(response)
+```
+
+---
+

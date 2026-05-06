@@ -1,0 +1,538 @@
+# ✅ 1. START FROM ZERO (ABSOLUTE BASICS)
+
+## 🔹 What is this experiment about?
+
+👉 Understanding **data distribution using graphs**
+
+Two main graphs:
+
+1. Histogram
+2. Boxplot
+
+---
+
+## 🔹 What is Histogram?
+
+👉 Shows frequency of values
+
+Example:
+
+```text
+Marks → how many students got 50, 60, 70
+```
+
+---
+
+## 🔹 What is Boxplot?
+
+👉 Shows:
+
+* Median
+* Quartiles
+* Outliers
+
+---
+
+## 🔹 Dataset Used: Iris
+
+| Feature       | Meaning           |
+| ------------- | ----------------- |
+| SepalLengthCm | outer leaf length |
+| SepalWidthCm  | outer leaf width  |
+| PetalLengthCm | inner leaf length |
+| PetalWidthCm  | inner leaf width  |
+
+---
+
+# ✅ 2. WHAT THIS EXPERIMENT DOES
+
+### 🎯 Aim:
+
+1. Load Iris dataset
+2. Analyze statistics
+3. Plot histograms
+4. Plot boxplots
+5. Detect distribution + outliers
+
+---
+
+### 🌍 Real-world Use:
+
+* Feature analysis
+* ML preprocessing
+* Data cleaning
+
+---
+
+# ✅ 3. FULL CODE (WORD-BY-WORD EXPLANATION)
+
+---
+
+# 🔹 Upload File
+
+```python
+from google.colab import files
+uploaded = files.upload()
+```
+
+### Meaning:
+
+* `files` → module
+* `upload()` → upload dataset
+
+---
+
+```python
+if uploaded:
+    print("Success")
+else:
+    print("Failed")
+```
+
+👉 Check upload
+
+---
+
+# 🔹 Import Libraries
+
+```python
+import pandas as pd
+```
+
+👉 Data handling
+
+---
+
+```python
+import seaborn as sns
+```
+
+👉 Visualization
+
+---
+
+# 🔹 Load Dataset
+
+```python
+data = pd.read_csv("/content/Iris.csv")
+```
+
+### Word-by-word:
+
+* `read_csv` → read file
+* `"Iris.csv"` → dataset
+
+---
+
+```python
+data.head()
+```
+
+👉 Shows first rows
+
+👉 From **page 1 table**:
+
+* 150 rows
+* 6 columns
+
+---
+
+# 🔹 Describe Data
+
+```python
+data.describe()
+```
+
+👉 Gives:
+
+| Term | Meaning  |
+| ---- | -------- |
+| mean | average  |
+| std  | spread   |
+| min  | smallest |
+| 25%  | Q1       |
+| 50%  | median   |
+| 75%  | Q3       |
+| max  | largest  |
+
+---
+
+👉 From **page 1 stats table**:
+
+* SepalLength mean ≈ 5.84
+* PetalLength mean ≈ 3.75
+
+---
+
+# 🔹 Info
+
+```python
+data.info()
+```
+
+👉 Shows:
+
+* data types
+* null values
+
+👉 From file:
+
+* No missing values
+
+---
+
+# 🔹 Histogram 1
+
+```python
+sns.histplot(data=data, x="SepalLengthCm")
+```
+
+### Word-by-word:
+
+* `histplot` → histogram
+* `data=data` → dataset
+* `x="SepalLengthCm"` → feature
+
+---
+
+👉 From **page 2 image**:
+👉 Bell-shaped distribution
+
+---
+
+# 🔹 Histogram 2
+
+```python
+sns.histplot(data=data, x="PetalLengthCm")
+```
+
+👉 From **page 2 image**:
+👉 Two peaks → different species
+
+---
+
+# 🔹 Histogram 3
+
+```python
+sns.histplot(data=data, x="SepalWidthCm")
+```
+
+👉 From **page 3 image**:
+👉 Slight variation
+
+---
+
+# 🔹 Histogram 4
+
+```python
+sns.histplot(data=data, x="PetalWidthCm")
+```
+
+👉 From **page 3 image**:
+👉 Clustered values
+
+---
+
+# 🔹 Boxplot 1
+
+```python
+sns.boxplot(x="SepalLengthCm", data=data)
+```
+
+👉 From **page 4 image**:
+👉 Median ≈ 5.8
+
+---
+
+# 🔹 Boxplot 2
+
+```python
+sns.boxplot(x="PetalLengthCm", data=data)
+```
+
+👉 Wide spread
+
+---
+
+# 🔹 Boxplot 3
+
+```python
+sns.boxplot(x="SepalWidthCm", data=data)
+```
+
+👉 Some outliers
+
+---
+
+# 🔹 Boxplot 4
+
+```python
+sns.boxplot(x="PetalWidthCm", data=data)
+```
+
+👉 Less spread
+
+---
+
+# 🔹 Combined Boxplot
+
+```python
+sns.boxplot(x="PetalWidthCm", y="PetalLengthCm", data=data)
+```
+
+---
+
+👉 From **page 5 image**:
+
+👉 Strong relationship:
+
+* As width increases → length increases
+
+---
+
+# ✅ 4. CORE CONCEPTS (CLEAR)
+
+---
+
+## 🔹 Histogram
+
+👉 Frequency distribution
+
+---
+
+## 🔹 Boxplot
+
+👉 Summary of distribution
+
+---
+
+## 🔹 Quartiles
+
+* Q1 → 25%
+* Median → 50%
+* Q3 → 75%
+
+---
+
+## 🔹 Outliers
+
+```text
+< Q1 - 1.5*IQR  
+> Q3 + 1.5*IQR
+```
+
+---
+
+## 🔹 Bimodal Distribution
+
+👉 Two peaks
+
+(Seen in PetalLength)
+
+---
+
+# ✅ 5. OUTPUT UNDERSTANDING
+
+---
+
+### From your file:
+
+### 📊 Histograms:
+
+* SepalLength → normal distribution
+* PetalLength → bimodal
+
+---
+
+### 📊 Boxplots:
+
+* SepalWidth → some outliers
+* Petal features → clear patterns
+
+---
+
+### 📊 Combined plot:
+
+👉 Strong correlation between petal length & width
+
+---
+
+# ⚠ Common Mistakes
+
+1. Confusing histogram with bar chart
+2. Ignoring outliers
+3. Not understanding quartiles
+4. Wrong axis selection
+5. Not reading distribution shape
+
+---
+
+# ✅ 6. VIVA QUESTIONS (DETAILED)
+
+---
+
+### 1. What is histogram?
+
+Frequency distribution graph.
+
+---
+
+### 2. What is boxplot?
+
+Distribution summary.
+
+---
+
+### 3. What is mean?
+
+Average.
+
+---
+
+### 4. What is median?
+
+Middle value.
+
+---
+
+### 5. What is quartile?
+
+Divide data into 4 parts.
+
+---
+
+### 6. What is IQR?
+
+Q3 - Q1.
+
+---
+
+### 7. What is outlier?
+
+Extreme value.
+
+---
+
+### 8. What is bimodal distribution?
+
+Two peaks.
+
+---
+
+### 9. What is seaborn?
+
+Visualization library.
+
+---
+
+### 10. What is pandas?
+
+Data library.
+
+---
+
+### 11. What is dataset?
+
+Collection of data.
+
+---
+
+### 12. What is feature?
+
+Input variable.
+
+---
+
+### 13. What is distribution?
+
+Spread of values.
+
+---
+
+### 14. What is correlation?
+
+Relationship between variables.
+
+---
+
+### 15. What is describe()?
+
+Stat summary.
+
+---
+
+### 16. What is info()?
+
+Structure info.
+
+---
+
+### 17. What is histogram bin?
+
+Group of values.
+
+---
+
+### 18. Why use boxplot?
+
+Detect outliers.
+
+---
+
+### 19. What is skewness?
+
+Data imbalance.
+
+---
+
+### 20. Real-world use?
+
+ML preprocessing.
+
+---
+
+# ✅ 7. CLEAN PYTHON IMPLEMENTATION
+
+```python
+from google.colab import files
+
+uploaded = files.upload()
+
+import pandas as pd
+import seaborn as sns
+
+data = pd.read_csv("Iris.csv")
+
+data.head()
+
+data.describe()
+
+data.info()
+
+sns.histplot(data=data, x="SepalLengthCm")
+sns.histplot(data=data, x="PetalLengthCm")
+sns.histplot(data=data, x="SepalWidthCm")
+sns.histplot(data=data, x="PetalWidthCm")
+
+sns.boxplot(x="SepalLengthCm", data=data)
+sns.boxplot(x="PetalLengthCm", data=data)
+sns.boxplot(x="SepalWidthCm", data=data)
+sns.boxplot(x="PetalWidthCm", data=data)
+
+sns.boxplot(x="PetalWidthCm", y="PetalLengthCm", data=data)
+```
+
+---
+
+# 🚀 FINAL UNDERSTANDING
+
+Experiment 10 teaches:
+
+👉 Histogram analysis
+👉 Boxplot analysis
+👉 Distribution understanding
+👉 Outlier detection
+👉 Feature relationships
+
+---
+

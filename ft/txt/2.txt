@@ -1,0 +1,622 @@
+
+
+# ✅ **Experiment 2 – Data Wrangling II**
+
+
+
+---
+
+# ✅ 1. START FROM ZERO (ABSOLUTE BASICS)
+
+## 🔹 What is this experiment about?
+
+In Experiment 1:
+👉 You **cleaned basic data**
+
+In Experiment 2:
+👉 You go **DEEPER into cleaning**
+
+---
+
+## 🔹 New Concepts Introduced
+
+### 1. Inconsistency
+
+Data is wrong or mixed
+
+Example:
+
+```
+72
+na
+NaN
+```
+
+👉 Same column → different formats → BAD DATA
+
+---
+
+### 2. Outliers
+
+Outliers = abnormal values
+
+Example:
+
+```
+Marks = 50, 60, 70, 1000 ❌
+```
+
+👉 1000 is OUTLIER
+
+---
+
+### 3. Transformation
+
+Changing data form
+
+Example:
+
+```
+Fees = ₹10,00,000 → 10 lakh → 0.01 million
+```
+
+---
+
+# ✅ 2. WHAT THIS EXPERIMENT DOES
+
+### 🎯 Aim:
+
+1. Find missing values
+2. Fix inconsistent data
+3. Detect outliers
+4. Transform data
+
+---
+
+### 🌍 Real-world Use:
+
+* Fraud detection (outliers)
+* Data cleaning pipelines
+* ML preprocessing
+* Financial analytics
+
+---
+
+# ✅ 3. FULL CODE (WORD-BY-WORD EXPLANATION)
+
+---
+
+## 🔹 Import Libraries
+
+```python
+import numpy as np
+```
+
+### Word-by-word:
+
+* `import` → bring library
+* `numpy` → math library
+* `as np` → shortcut
+
+👉 Used for calculations
+
+---
+
+```python
+import matplotlib.pyplot as plt
+```
+
+* `matplotlib` → plotting graphs
+* `pyplot` → graph functions
+* `plt` → shortcut
+
+---
+
+```python
+%matplotlib inline
+```
+
+👉 Jupyter command
+👉 Shows graphs inside notebook
+
+---
+
+```python
+import pandas as pd
+```
+
+👉 For data handling
+
+---
+
+## 🔹 Load Dataset
+
+```python
+df = pd.read_csv("AcademicPerformance.csv")
+```
+
+👉 Load dataset into DataFrame
+
+---
+
+## 🔹 Print Data
+
+```python
+print(df)
+print(df['math score'])
+```
+
+### Meaning:
+
+* `df` → full dataset
+* `df['math score']` → only math column
+
+---
+
+## 🔹 Check Missing Values
+
+```python
+df['math score'].isnull()
+```
+
+### Word-by-word:
+
+* `df` → dataset
+* `['math score']` → select column
+* `isnull()` → check missing
+
+👉 Output:
+
+```
+True → missing  
+False → present
+```
+
+---
+
+```python
+df['reading score'].isnull()
+```
+
+👉 Same for reading column
+
+---
+
+## 🔹 Detect Inconsistent Data
+
+```python
+df['reading score']
+```
+
+Output shows:
+
+```
+72
+na
+NaN
+```
+
+👉 Problem:
+
+* "na" is text
+* NaN is missing
+
+👉 Inconsistent format
+
+---
+
+## 🔹 Fix Inconsistency
+
+```python
+missing_values = ["n/a", "na", "--"]
+```
+
+👉 Define invalid values
+
+---
+
+```python
+df = pd.read_csv("file.csv", na_values=missing_values)
+```
+
+### Word-by-word:
+
+* `na_values` → treat these as missing
+
+👉 Converts:
+
+```
+na → NaN
+```
+
+---
+
+## 🔹 Outlier Detection
+
+```python
+dataset = [11,41,20,3,101,55,68,97,99,6]
+```
+
+👉 Sample data
+
+---
+
+```python
+sorted(dataset)
+```
+
+👉 Sort values
+
+---
+
+```python
+quantile1, quantile3 = np.percentile(dataset, [25,75])
+```
+
+### Word-by-word:
+
+* `percentile` → find quartiles
+* `[25,75]` → Q1 and Q3
+
+---
+
+## 🔹 VERY IMPORTANT (Understand Properly)
+
+### Q1 = 25%
+
+### Q3 = 75%
+
+---
+
+```python
+iqr_value = (quantile3 - quantile1)
+```
+
+👉 IQR = Q3 - Q1
+
+---
+
+```python
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+```
+
+👉 Outlier range
+
+---
+
+### Final Meaning:
+
+If value:
+
+```
+< lower_bound OR > upper_bound → OUTLIER
+```
+
+---
+
+## 🔹 Data Transformation
+
+---
+
+### Age Calculation
+
+```python
+from datetime import date
+df['age'] = date.today().year - df['Year_Birth']
+```
+
+### Word-by-word:
+
+* `date.today().year` → current year
+* `df['Year_Birth']` → birth year
+
+👉 Age = current year - birth year
+
+---
+
+---
+
+### Extract Year
+
+```python
+df['Year'] = pd.DatetimeIndex(df['Dt_Admission']).year
+```
+
+### Meaning:
+
+* Converts date column → extract year
+
+---
+
+---
+
+### Experience / Years since admission
+
+```python
+df['E_L'] = date.today().year - df['Year']
+```
+
+👉 Years since admission
+
+---
+
+---
+
+## 🔹 Fees Cleaning
+
+```python
+df['Fees$'] = df['College_Fees'].str.replace(',', '').str.replace('$', '')
+```
+
+### Word-by-word:
+
+* `str.replace` → remove symbols
+* `,` → comma
+* `$` → dollar
+
+👉 Convert:
+
+```
+$84,835 → 84835
+```
+
+---
+
+```python
+df['Fees_M$'] = df['Fees$'].apply(lambda X: round(X/1000000))
+```
+
+### Word-by-word:
+
+* `apply` → apply function
+* `lambda` → small function
+* `X/1000000` → convert to millions
+
+👉 Example:
+
+```
+84835 → 0 million
+```
+
+---
+
+# ✅ 4. CORE CONCEPTS (CLEAR UNDERSTANDING)
+
+---
+
+## 🔹 Missing Values
+
+* NaN
+* null
+
+---
+
+## 🔹 Inconsistency
+
+Different formats in same column
+
+---
+
+## 🔹 Outliers
+
+Extreme values
+
+---
+
+## 🔹 IQR Method
+
+Formula:
+
+```
+IQR = Q3 - Q1
+```
+
+Outlier condition:
+
+```
+< Q1 - 1.5*IQR OR > Q3 + 1.5*IQR
+```
+
+---
+
+## 🔹 Transformation
+
+Change scale or format
+
+---
+
+# ✅ 5. OUTPUT UNDERSTANDING
+
+* Many missing values
+* Mixed formats (na, NaN)
+* Outliers detected
+* Fees converted
+* Age calculated
+
+---
+
+# ⚠ Common Mistakes
+
+1. Not handling "na" properly
+2. Forgetting `na_values`
+3. Wrong IQR calculation
+4. Not converting strings before math
+5. Using wrong column type
+
+---
+
+# ✅ 6. VIVA QUESTIONS (DETAILED)
+
+---
+
+### 1. What is data inconsistency?
+
+Different formats in same column.
+
+---
+
+### 2. What is outlier?
+
+Extreme value far from normal data.
+
+---
+
+### 3. What is IQR?
+
+Difference between Q3 and Q1.
+
+---
+
+### 4. Formula of IQR?
+
+IQR = Q3 - Q1
+
+---
+
+### 5. Outlier formula?
+
+< Q1 - 1.5×IQR OR > Q3 + 1.5×IQR
+
+---
+
+### 6. What is percentile?
+
+Value below which % of data lies.
+
+---
+
+### 7. What is transformation?
+
+Changing data format/scale.
+
+---
+
+### 8. Why remove outliers?
+
+They distort analysis.
+
+---
+
+### 9. What is na_values?
+
+Convert custom missing values.
+
+---
+
+### 10. What is lambda?
+
+Anonymous function.
+
+---
+
+### 11. What is apply()?
+
+Apply function to column.
+
+---
+
+### 12. What is DatetimeIndex?
+
+Extract date info.
+
+---
+
+### 13. Why convert fees?
+
+To numeric format.
+
+---
+
+### 14. What is string cleaning?
+
+Removing unwanted characters.
+
+---
+
+### 15. What is sorting?
+
+Arranging data.
+
+---
+
+### 16. Why detect outliers?
+
+Improve accuracy.
+
+---
+
+### 17. What is missing value handling?
+
+Fixing empty values.
+
+---
+
+### 18. What is normalization?
+
+Scaling data.
+
+---
+
+### 19. What is feature engineering?
+
+Creating new columns.
+
+---
+
+### 20. What is age calculation?
+
+Derived feature.
+
+---
+
+# ✅ 7. CLEAN PYTHON IMPLEMENTATION
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv("AcademicPerformance.csv")
+
+print(df)
+print(df['math score'])
+
+print(df['math score'].isnull())
+print(df['reading score'])
+print(df['reading score'].isnull())
+
+missing_values = ["n/a", "na", "--"]
+
+df = pd.read_csv("AcademicPerformance.csv", na_values=missing_values)
+
+dataset = [11,41,20,3,101,55,68,97,99,6]
+
+sorted(dataset)
+
+quantile1, quantile3 = np.percentile(dataset, [25,75])
+
+iqr_value = (quantile3 - quantile1)
+
+lower_bound_value = quantile1 - (1.5*iqr_value)
+upper_bound_value = quantile3 + (1.5*iqr_value)
+
+from datetime import date
+
+df['age'] = date.today().year - df['Year_Birth']
+
+df['Year'] = pd.DatetimeIndex(df['Dt_Admission']).year
+
+df['E_L'] = date.today().year - df['Year']
+
+df['Fees$'] = df['College_Fees'].str.replace(',', '').str.replace('$', '')
+
+df['Fees_M$'] = df['Fees$'].apply(lambda X: round(X/1000000))
+
+df.head(5)
+```
+
+---
+
+# 🚀 FINAL UNDERSTANDING
+
