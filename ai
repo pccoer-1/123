@@ -1,0 +1,1245 @@
+# ARTIFICIAL INTELLIGENCE (LP2/SPPU COMP 2019) FULL VIVA + THEORY + PRACTICAL GUIDE
+
+Your practical files:
+
+1. BFS + DFS Graph Traversal 
+2. 8 Puzzle Problem 
+3. Kruskal Algorithm 
+4. N Queen Problem 
+5. Chatbot using NLTK 
+6. Graph Coloring Problem 
+7. Expert System 
+8. Selection Sort 
+
+---
+
+# UNIT 1 — INTRODUCTION TO AI
+
+# What is Artificial Intelligence?
+
+Artificial Intelligence means:
+Making machines think and act like humans.
+
+Examples:
+
+* Chatbots
+* Self-driving cars
+* Face recognition
+* Alexa
+* Google Assistant
+
+---
+
+# Goals of AI
+
+1. Learning
+2. Reasoning
+3. Decision making
+4. Problem solving
+5. Understanding language
+
+---
+
+# History of AI
+
+| Year    | Event                             |
+| ------- | --------------------------------- |
+| 1950    | Alan Turing proposed AI           |
+| 1956    | AI term introduced                |
+| 1997    | Deep Blue defeated chess champion |
+| 2011    | IBM Watson                        |
+| Present | Generative AI, ChatGPT            |
+
+---
+
+# Intelligent Agent
+
+An intelligent agent:
+
+* observes environment
+* takes decisions
+* performs actions
+
+Example:
+Robot vacuum cleaner.
+
+---
+
+# Components of Agent
+
+| Component   | Meaning          |
+| ----------- | ---------------- |
+| Sensors     | Input devices    |
+| Actuators   | Output actions   |
+| Environment | Surrounding area |
+
+---
+
+# Rational Agent
+
+A rational agent:
+Chooses best action to achieve goal.
+
+---
+
+# Types of Environment
+
+| Type                 | Meaning                   |
+| -------------------- | ------------------------- |
+| Fully observable     | Everything visible        |
+| Partially observable | Some information hidden   |
+| Deterministic        | Same action → same result |
+| Stochastic           | Random results possible   |
+
+---
+
+# State Space
+
+All possible situations of a problem.
+
+Example:
+All board arrangements in 8 puzzle.
+
+---
+
+# AI Risks
+
+* Job loss
+* Privacy issues
+* Deepfakes
+* Autonomous weapons
+
+---
+
+# AI Benefits
+
+* Automation
+* Faster decisions
+* Medical diagnosis
+* Smart assistants
+
+---
+
+# UNIT 2 — PROBLEM SOLVING & SEARCHING
+
+# Problem Solving Agent
+
+Agent that:
+
+1. identifies goal
+2. searches solution
+3. performs action
+
+---
+
+# Search Algorithm
+
+Method used to find solution path.
+
+---
+
+# Types of Search
+
+| Type       | Example    |
+| ---------- | ---------- |
+| Uninformed | BFS, DFS   |
+| Informed   | A*, Greedy |
+
+---
+
+# BFS (Breadth First Search)
+
+Practical: 
+
+Uses:
+
+* Queue
+* Level order traversal
+
+---
+
+# DFS (Depth First Search)
+
+Uses:
+
+* Stack/Recursion
+* Goes deep first
+
+---
+
+# Difference Between BFS & DFS
+
+| BFS                 | DFS         |
+| ------------------- | ----------- |
+| Queue               | Stack       |
+| Level-wise          | Depth-wise  |
+| More memory         | Less memory |
+| Finds shortest path | May not     |
+
+---
+
+# Heuristic Function
+
+Estimate to reach goal.
+
+Example:
+Distance to destination.
+
+---
+
+# A* Algorithm
+
+Formula:
+
+f(n)=g(n)+h(n)
+
+Where:
+
+* g(n) = cost so far
+* h(n) = estimated remaining cost
+
+---
+
+# Local Search
+
+Searches nearby states only.
+
+Example:
+Hill Climbing.
+
+---
+
+# Optimization Problem
+
+Find BEST solution among many solutions.
+
+---
+
+# UNIT 3 — GAMES & CSP
+
+# Game Theory
+
+Study of strategic decisions.
+
+Example:
+Chess.
+
+---
+
+# Minimax Algorithm
+
+Used in:
+
+* Chess
+* Tic Tac Toe
+
+Max player:
+tries maximum score.
+
+Min player:
+tries minimum score.
+
+---
+
+# Alpha Beta Pruning
+
+Optimization of Minimax.
+
+Skips unnecessary branches.
+
+---
+
+# Monte Carlo Tree Search
+
+Uses:
+
+* random simulations
+* probability
+
+Used in:
+
+* AlphaGo
+
+---
+
+# Constraint Satisfaction Problem (CSP)
+
+Problem with constraints.
+
+Examples:
+
+* Sudoku
+* N Queen
+* Graph Coloring
+
+---
+
+# Backtracking
+
+Try → fail → undo → retry.
+
+Used in:
+
+* N Queen
+* Graph Coloring
+
+---
+
+# UNIT 4 — KNOWLEDGE
+
+# Knowledge Based Agent
+
+Stores knowledge and reasons using it.
+
+---
+
+# Wumpus World
+
+AI environment with:
+
+* pits
+* gold
+* monster
+
+Used to teach reasoning.
+
+---
+
+# Logic
+
+Method to represent knowledge mathematically.
+
+---
+
+# Propositional Logic
+
+Uses:
+
+* TRUE/FALSE
+
+Example:
+
+```text
+P = It is raining
+Q = Road is wet
+```
+
+---
+
+# First Order Logic
+
+More advanced logic.
+
+Includes:
+
+* objects
+* relations
+* quantifiers
+
+Example:
+
+```text
+All humans are mortal
+```
+
+---
+
+# UNIT 5 — REASONING
+
+# Inference
+
+Deriving new knowledge from old knowledge.
+
+---
+
+# Forward Chaining
+
+Starts from facts.
+
+Moves toward conclusion.
+
+---
+
+# Backward Chaining
+
+Starts from goal.
+
+Moves backward to facts.
+
+---
+
+# Resolution
+
+Rule used in theorem proving.
+
+---
+
+# Ontology
+
+Structured representation of knowledge.
+
+---
+
+# Default Reasoning
+
+Assume something true unless proven false.
+
+Example:
+Birds fly.
+
+---
+
+# UNIT 6 — PLANNING
+
+# Planning
+
+Sequence of actions to achieve goal.
+
+---
+
+# Classical Planning
+
+Known environment and fixed actions.
+
+---
+
+# Hierarchical Planning
+
+Large task divided into smaller tasks.
+
+---
+
+# Nondeterministic Domain
+
+Actions may produce unpredictable results.
+
+---
+
+# AI Ethics
+
+Important topics:
+
+* bias
+* fairness
+* privacy
+* accountability
+
+---
+
+# AI Architecture
+
+Structure of AI system.
+
+Includes:
+
+* learning
+* reasoning
+* memory
+* planning
+
+---
+
+# PRACTICAL 1 — BFS & DFS
+
+Source: 
+
+# LINE BY LINE EXPLANATION
+
+```cpp
+#include<iostream>
+```
+
+Input-output library.
+
+---
+
+```cpp
+#include<list>
+```
+
+Used for adjacency list.
+
+---
+
+# What is Adjacency List?
+
+Graph storage technique.
+
+Example:
+
+```text
+0 -> 1 2 3
+1 -> 0 3
+```
+
+Memory efficient.
+
+---
+
+```cpp
+#include<map>
+```
+
+Stores key-value pairs.
+
+Example:
+
+```cpp
+map<int,bool>
+```
+
+---
+
+```cpp
+#include<queue>
+```
+
+Used in BFS.
+
+FIFO structure.
+
+---
+
+```cpp
+map<int,list<int>> adjList;
+```
+
+Graph storage.
+
+Key = node
+Value = neighbours
+
+---
+
+```cpp
+map<int,bool> visited;
+```
+
+Tracks visited nodes.
+
+---
+
+```cpp
+queue<int> q;
+```
+
+Queue for BFS.
+
+---
+
+```cpp
+adjList[src].push_back(dest);
+```
+
+Add edge to graph.
+
+---
+
+```cpp
+visited[node]=true;
+```
+
+Mark node visited.
+
+---
+
+```cpp
+for(int i : adjList[node])
+```
+
+Traverse neighbours.
+
+---
+
+```cpp
+if(!visited[i])
+```
+
+Visit unvisited nodes only.
+
+---
+
+# BFS FLOW
+
+1. Push start node
+2. Pop front
+3. Visit neighbours
+4. Repeat
+
+---
+
+# DFS FLOW
+
+1. Visit node
+2. Recursively visit neighbours
+
+---
+
+# PRACTICAL 2 — 8 PUZZLE
+
+Source: 
+
+---
+
+# What is 8 Puzzle?
+
+3x3 board problem.
+
+Goal:
+Reach target arrangement.
+
+---
+
+# Heuristic Function
+
+Estimates distance to goal.
+
+Used:
+Manhattan Distance.
+
+Formula:
+
+|x_1-x_2|+|y_1-y_2|
+
+---
+
+# What is Manhattan Distance?
+
+Distance travelled horizontally + vertically.
+
+---
+
+# Important Variables
+
+```cpp
+int g = 0;
+```
+
+Cost so far.
+
+---
+
+```cpp
+return h + g;
+```
+
+A* evaluation function.
+
+---
+
+# Solvable Function
+
+Checks inversion count.
+
+Even inversions:
+solvable.
+
+Odd inversions:
+unsolvable.
+
+---
+
+# PRACTICAL 3 — KRUSKAL
+
+Source: 
+
+---
+
+# What is MST?
+
+Minimum Spanning Tree.
+
+Connect all vertices with minimum cost.
+
+---
+
+# Important Concepts
+
+## Edge
+
+Connection between vertices.
+
+## Weight
+
+Cost of edge.
+
+---
+
+# DSU (Disjoint Set Union)
+
+Used for cycle detection.
+
+---
+
+# Path Compression
+
+Optimizes find().
+
+---
+
+# Union by Rank
+
+Attach smaller tree below bigger tree.
+
+---
+
+# Kruskal Steps
+
+1. Sort edges
+2. Pick smallest edge
+3. Avoid cycle
+4. Repeat
+
+---
+
+# PRACTICAL 4 — N QUEEN
+
+Source: 
+
+---
+
+# Goal
+
+Place queens safely.
+
+---
+
+# Queen attacks:
+
+* row
+* column
+* diagonal
+
+---
+
+# Backtracking
+
+If current path fails:
+undo previous step.
+
+---
+
+# isSafe()
+
+Checks:
+
+* column
+* left diagonal
+* right diagonal
+
+---
+
+# PRACTICAL 5 — CHATBOT
+
+Source: 
+
+---
+
+# NLTK
+
+Natural Language Toolkit.
+
+Python library for NLP.
+
+---
+
+# Reflection
+
+Maps:
+
+```text
+I am → you are
+```
+
+---
+
+# Regex
+
+Pattern matching.
+
+Example:
+
+```python
+r"my name is (.*)"
+```
+
+---
+
+# Chatbot Flow
+
+1. User input
+2. Match pattern
+3. Generate reply
+
+---
+
+# PRACTICAL 6 — GRAPH COLORING
+
+Source: 
+
+---
+
+# Goal
+
+No adjacent nodes should have same color.
+
+---
+
+# Used Algorithm
+
+Backtracking.
+
+---
+
+# isSafe()
+
+Checks neighbour colors.
+
+---
+
+# PRACTICAL 7 — EXPERT SYSTEM
+
+Source: 
+
+---
+
+# Expert System
+
+AI system that mimics human expert.
+
+---
+
+# Components
+
+| Component        | Meaning       |
+| ---------------- | ------------- |
+| Knowledge Base   | Stores rules  |
+| Inference Engine | Applies rules |
+
+---
+
+# IF ELSE LOGIC
+
+Acts like decision tree.
+
+---
+
+# PRACTICAL 8 — SELECTION SORT
+
+Source: 
+
+---
+
+# Selection Sort
+
+Find minimum element and place correctly.
+
+---
+
+# Time Complexity
+
+O(n^2)
+
+---
+
+# 100 IMPORTANT VIVA QUESTIONS & ANSWERS
+
+# 1 What is AI?
+
+Simulation of human intelligence in machines.
+
+# 2 Father of AI?
+
+John McCarthy.
+
+# 3 What is an agent?
+
+Entity that observes and acts.
+
+# 4 What is rational agent?
+
+Agent choosing best action.
+
+# 5 What is environment?
+
+Surrounding area of agent.
+
+# 6 What is search space?
+
+All possible states.
+
+# 7 What is BFS?
+
+Level-order graph traversal.
+
+# 8 Data structure used in BFS?
+
+Queue.
+
+# 9 What is DFS?
+
+Depth-first traversal.
+
+# 10 Data structure used in DFS?
+
+Stack/Recursion.
+
+# 11 What is heuristic?
+
+Estimated distance to goal.
+
+# 12 What is A*?
+
+Heuristic search algorithm.
+
+# 13 Formula of A*?
+
+f(n)=g(n)+h(n)
+
+# 14 What is local search?
+
+Search nearby states only.
+
+# 15 What is optimization?
+
+Finding best solution.
+
+# 16 What is game theory?
+
+Study of strategic decisions.
+
+# 17 What is minimax?
+
+Game decision algorithm.
+
+# 18 What is alpha-beta pruning?
+
+Optimization of minimax.
+
+# 19 What is CSP?
+
+Constraint Satisfaction Problem.
+
+# 20 Example of CSP?
+
+N Queen.
+
+# 21 What is backtracking?
+
+Try-fail-undo approach.
+
+# 22 What is propositional logic?
+
+True/False logic.
+
+# 23 What is first-order logic?
+
+Logic with objects and relations.
+
+# 24 What is inference?
+
+Deriving conclusions.
+
+# 25 What is forward chaining?
+
+Facts to goal.
+
+# 26 What is backward chaining?
+
+Goal to facts.
+
+# 27 What is ontology?
+
+Knowledge structure.
+
+# 28 What is planning?
+
+Sequence of actions.
+
+# 29 What is AI ethics?
+
+Responsible AI usage.
+
+# 30 What is adjacency list?
+
+Graph representation storing neighbours.
+
+# 31 Why adjacency list?
+
+Memory efficient.
+
+# 32 What is queue?
+
+FIFO structure.
+
+# 33 What is stack?
+
+LIFO structure.
+
+# 34 What is recursion?
+
+Function calling itself.
+
+# 35 What is MST?
+
+Minimum Spanning Tree.
+
+# 36 What is Kruskal algorithm?
+
+Greedy MST algorithm.
+
+# 37 Why sorting in Kruskal?
+
+To select minimum edge.
+
+# 38 What is DSU?
+
+Disjoint Set Union.
+
+# 39 What is path compression?
+
+Optimization in DSU.
+
+# 40 What is union by rank?
+
+Attach smaller tree below larger tree.
+
+# 41 What is cycle?
+
+Closed loop in graph.
+
+# 42 What is graph coloring?
+
+Assign colors without conflict.
+
+# 43 Why graph coloring?
+
+Scheduling/register allocation.
+
+# 44 What is expert system?
+
+Human expert simulation.
+
+# 45 What is knowledge base?
+
+Stores rules.
+
+# 46 What is inference engine?
+
+Applies reasoning.
+
+# 47 What is NLP?
+
+Natural Language Processing.
+
+# 48 What is chatbot?
+
+Conversation AI system.
+
+# 49 What is regex?
+
+Pattern matching.
+
+# 50 What is NLTK?
+
+Python NLP library.
+
+# 51 What is selection sort?
+
+Repeatedly selecting minimum.
+
+# 52 Best case of selection sort?
+
+O(n²)
+
+# 53 Worst case of selection sort?
+
+O(n²)
+
+# 54 What is greedy algorithm?
+
+Chooses locally best option.
+
+# 55 What is informed search?
+
+Uses heuristic.
+
+# 56 What is uninformed search?
+
+No heuristic.
+
+# 57 What is hill climbing?
+
+Local search algorithm.
+
+# 58 What is simulated annealing?
+
+Probabilistic optimization.
+
+# 59 What is state?
+
+Current configuration.
+
+# 60 Goal state?
+
+Desired state.
+
+# 61 Initial state?
+
+Starting state.
+
+# 62 What is branch factor?
+
+Children per node.
+
+# 63 What is depth?
+
+Distance from root.
+
+# 64 What is completeness?
+
+Guarantee to find solution.
+
+# 65 Is BFS complete?
+
+Yes.
+
+# 66 Is DFS complete?
+
+Not always.
+
+# 67 Is BFS optimal?
+
+Yes for equal cost.
+
+# 68 What is memory complexity?
+
+Memory usage amount.
+
+# 69 What is time complexity?
+
+Execution time growth.
+
+# 70 What is deterministic environment?
+
+Fixed outcome.
+
+# 71 What is stochastic environment?
+
+Random outcome.
+
+# 72 Fully observable environment?
+
+All information visible.
+
+# 73 Partially observable?
+
+Some information hidden.
+
+# 74 What is utility?
+
+Measure of satisfaction.
+
+# 75 What is machine learning?
+
+Learning from data.
+
+# 76 What is deep learning?
+
+Neural network learning.
+
+# 77 What is supervised learning?
+
+Learning with labels.
+
+# 78 What is unsupervised learning?
+
+Learning without labels.
+
+# 79 What is reinforcement learning?
+
+Learning using rewards.
+
+# 80 What is node?
+
+Graph vertex.
+
+# 81 What is edge?
+
+Connection between nodes.
+
+# 82 What is weighted graph?
+
+Graph with edge costs.
+
+# 83 What is heuristic admissibility?
+
+Never overestimates.
+
+# 84 What is admissible heuristic example?
+
+Manhattan distance.
+
+# 85 What is Manhattan distance?
+
+Horizontal + vertical distance.
+
+# 86 What is Euclidean distance?
+
+Straight line distance.
+
+# 87 What is theorem proving?
+
+Logical proof generation.
+
+# 88 What is resolution?
+
+Inference rule.
+
+# 89 What is semantic network?
+
+Graph-based knowledge representation.
+
+# 90 What is production rule?
+
+IF-THEN rule.
+
+# 91 What is knowledge engineering?
+
+Building knowledge systems.
+
+# 92 What is autonomous agent?
+
+Independent intelligent system.
+
+# 93 What is reactive agent?
+
+Responds immediately.
+
+# 94 What is model-based agent?
+
+Uses internal world model.
+
+# 95 What is utility-based agent?
+
+Chooses highest utility.
+
+# 96 What is learning agent?
+
+Improves with experience.
+
+# 97 What is AI architecture?
+
+Overall AI system structure.
+
+# 98 What is ethical AI?
+
+Fair and safe AI.
+
+# 99 Future of AI?
+
+Automation and intelligent systems.
+
+# 100 Real-life AI examples?
+
+ChatGPT, Tesla, Alexa, Google Maps.
