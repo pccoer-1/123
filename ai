@@ -1243,3 +1243,898 @@ Automation and intelligent systems.
 # 100 Real-life AI examples?
 
 ChatGPT, Tesla, Alexa, Google Maps.
+
+
+# PRACTICAL 1 — BFS & DFS COMPLETE DEEP EXPLANATION
+
+Source: 
+
+---
+
+# AIM
+
+Implement:
+
+1. DFS traversal
+2. BFS traversal
+
+using graph.
+
+---
+
+# WHAT IS GRAPH?
+
+Graph is data structure containing:
+
+* Vertices (nodes)
+* Edges (connections)
+
+Example:
+
+```text id="bup7h2"
+0 ---- 1
+|    /
+|   /
+2  3 ---- 4 ---- 5
+|
+6
+```
+
+---
+
+# TYPES OF GRAPH
+
+| Type       | Meaning       |
+| ---------- | ------------- |
+| Directed   | One-way edge  |
+| Undirected | Two-way edge  |
+| Weighted   | Edge has cost |
+| Unweighted | No cost       |
+
+Your program uses:
+
+* Undirected graph
+* Unweighted graph
+
+Because:
+
+```cpp id="jlwmrl"
+adjList[src].push_back(dest);
+adjList[dest].push_back(src);
+```
+
+Both directions added.
+
+---
+
+# HEADER FILES
+
+```cpp id="hd1m8t"
+#include<iostream>
+```
+
+Used for:
+
+```cpp id="vjlwm8"
+cout
+cin
+```
+
+---
+
+```cpp id="jlwmnr"
+#include<list>
+```
+
+Used for linked list.
+
+---
+
+# WHAT IS LIST?
+
+Dynamic linked structure.
+
+Stores:
+
+```text id="j0wz6g"
+1 -> 2 -> 3
+```
+
+Advantages:
+
+* Dynamic size
+* Fast insertion
+
+---
+
+```cpp id="7mjlwm"
+#include<map>
+```
+
+Associative container.
+
+Stores:
+
+```text id="jlwm9o"
+key -> value
+```
+
+Example:
+
+```cpp id="jlwm4x"
+map<int,bool>
+```
+
+---
+
+# WHAT IS MAP?
+
+Data structure storing:
+
+* unique keys
+* values
+
+Example:
+
+```text id="jlwm7q"
+0 -> true
+1 -> false
+```
+
+---
+
+```cpp id="jlwmec"
+#include<queue>
+```
+
+Used for BFS.
+
+---
+
+# WHAT IS QUEUE?
+
+FIFO structure.
+
+FIFO:
+First In First Out.
+
+Example:
+
+```text id="jlwm0r"
+Insert: 1 2 3
+
+Remove:
+1 first
+```
+
+Like:
+
+* ticket line
+* railway queue
+
+---
+
+# CLASS GRAPH
+
+```cpp id="jlwm8d"
+class Graph
+```
+
+Blueprint for graph object.
+
+---
+
+# ADJACENCY LIST
+
+```cpp id="jlwm2p"
+map<int, list<int>> adjList;
+```
+
+MOST IMPORTANT.
+
+---
+
+# WHAT IS ADJACENCY LIST?
+
+Stores neighbours of node.
+
+Example graph:
+
+```text id="jlwm0n"
+0 -> 1 2 3
+1 -> 0 3
+2 -> 0 6
+```
+
+Memory efficient.
+
+---
+
+# WHY NOT MATRIX?
+
+Adjacency matrix uses:
+
+```text id="jlwm95"
+V x V
+```
+
+memory.
+
+Adjacency list stores only edges.
+
+---
+
+# VISITED MAP
+
+```cpp id="jlwm2d"
+map<int,bool> visited;
+```
+
+Tracks visited nodes.
+
+---
+
+# WHY VISITED IS NEEDED?
+
+Without visited:
+program enters infinite loop.
+
+Example:
+
+```text id="jlwm7i"
+0 -> 1
+1 -> 0
+```
+
+Will repeat forever.
+
+---
+
+# QUEUE DECLARATION
+
+```cpp id="jlwm7s"
+queue<int> q;
+```
+
+Queue for BFS traversal.
+
+---
+
+# ADD EDGE FUNCTION
+
+```cpp id="jlwm1j"
+void addEdge(int src,int dest)
+```
+
+Adds edge between nodes.
+
+---
+
+# THIS LINE
+
+```cpp id="jlwm9s"
+adjList[src].push_back(dest);
+```
+
+Meaning:
+add destination into source list.
+
+---
+
+# push_back()
+
+Adds element at end.
+
+Example:
+
+```cpp id="jlwm0z"
+1 2 3
+push_back(4)
+
+1 2 3 4
+```
+
+---
+
+# DFS FUNCTION
+
+```cpp id="jlwmf3"
+void DFS(int node)
+```
+
+Recursive DFS traversal.
+
+---
+
+# FIRST STEP
+
+```cpp id="jlwm5w"
+visited[node]=true;
+```
+
+Mark node visited.
+
+---
+
+# SECOND STEP
+
+```cpp id="jlwm6z"
+cout<<node<<" ";
+```
+
+Print node.
+
+---
+
+# RANGE BASED LOOP
+
+```cpp id="jlwm8w"
+for(int i : adjList[node])
+```
+
+Iterate neighbours.
+
+Equivalent:
+
+```cpp id="jlwm3y"
+for(each neighbour)
+```
+
+---
+
+# CONDITION
+
+```cpp id="jlwm44"
+if(!visited[i])
+```
+
+If node NOT visited.
+
+---
+
+# RECURSION
+
+```cpp id="jlwm13"
+DFS(i);
+```
+
+Function calls itself.
+
+---
+
+# WHAT IS RECURSION?
+
+Function calling itself repeatedly.
+
+---
+
+# DFS EXECUTION FLOW
+
+Start:
+
+```text id="jlwm0a"
+DFS(0)
+```
+
+Traversal:
+
+```text id="jlwm3e"
+0 → 1 → 3 → 4 → 5
+```
+
+then backtrack.
+
+---
+
+# BFS FUNCTION
+
+```cpp id="jlwm4l"
+void BFS()
+```
+
+Breadth First Search.
+
+---
+
+# BASE CONDITION
+
+```cpp id="jlwm4h"
+if(q.empty()) return;
+```
+
+Stop recursion if queue empty.
+
+---
+
+# WHAT IS BASE CONDITION?
+
+Condition stopping recursion.
+
+Without it:
+infinite recursion occurs.
+
+---
+
+# FRONT ELEMENT
+
+```cpp id="jlwm7u"
+int node=q.front();
+```
+
+Gets front queue element.
+
+---
+
+# REMOVE FRONT
+
+```cpp id="jlwm1u"
+q.pop();
+```
+
+Deletes front element.
+
+---
+
+# BFS NEIGHBOUR VISIT
+
+```cpp id="jlwm4v"
+q.push(i);
+```
+
+Push neighbour into queue.
+
+---
+
+# BFS FLOW
+
+Start:
+
+```text id="jlwm3m"
+Queue = [0]
+```
+
+Remove 0.
+
+Insert neighbours:
+
+```text id="jlwm4b"
+1 2 3
+```
+
+Continue level-wise.
+
+---
+
+# BFS OUTPUT
+
+```text id="jlwm7x"
+0 1 2 3 4 6 5
+```
+
+---
+
+# DFS OUTPUT
+
+```text id="jlwm7f"
+0 1 3 4 5 2 6
+```
+
+---
+
+# TIME COMPLEXITY
+
+BFS:
+O(V+E)
+
+DFS:
+O(V+E)
+
+Where:
+
+* V = vertices
+* E = edges
+
+---
+
+# SPACE COMPLEXITY
+
+DFS:
+
+```text id="jlwm1c"
+O(V)
+```
+
+BFS:
+
+```text id="jlwm3r"
+O(V)
+```
+
+---
+
+# PRACTICAL INTERVIEW QUESTIONS
+
+# Why queue in BFS?
+
+Because BFS processes level-wise.
+
+Queue maintains order.
+
+---
+
+# Why recursion in DFS?
+
+Recursion internally uses stack.
+
+---
+
+# Difference between stack and queue?
+
+| Stack | Queue |
+| ----- | ----- |
+| LIFO  | FIFO  |
+| DFS   | BFS   |
+
+---
+
+# APPLICATIONS OF BFS
+
+1. Shortest path
+2. GPS
+3. Social networks
+4. Web crawling
+
+---
+
+# APPLICATIONS OF DFS
+
+1. Cycle detection
+2. Maze solving
+3. Topological sorting
+
+---
+
+# WHAT IS COMPLETE ALGORITHM?
+
+Always finds solution if exists.
+
+BFS is complete.
+
+---
+
+# WHAT IS OPTIMAL?
+
+Finds best solution.
+
+BFS optimal for equal weights.
+
+---
+
+# WHY DFS MAY FAIL?
+
+May go infinitely deep.
+
+---
+
+# WHAT IS TREE?
+
+Special graph:
+
+* no cycles
+
+---
+
+# WHAT IS CYCLIC GRAPH?
+
+Contains loops.
+
+---
+
+# MEMORY DIFFERENCE
+
+BFS uses more memory because:
+stores entire level.
+
+DFS stores path only.
+
+---
+
+# WHAT IS SEARCH TREE?
+
+Tree generated during search.
+
+---
+
+# PRACTICAL 2 — 8 PUZZLE DEEP EXPLANATION
+
+Source: 
+
+---
+
+# AIM
+
+Solve 8 puzzle using heuristic search.
+
+---
+
+# WHAT IS 8 PUZZLE?
+
+3x3 board.
+
+Contains:
+
+* numbers 1–8
+* one empty space
+
+Example:
+
+```text id="jlwm0m"
+1 2 3
+4 5 6
+7 8 _
+```
+
+---
+
+# GOAL
+
+Transform start state into goal state.
+
+---
+
+# STATE SPACE
+
+All possible arrangements.
+
+---
+
+# HEURISTIC SEARCH
+
+Uses intelligent guessing.
+
+---
+
+# HEADER FILES
+
+```cpp id="jlwm4f"
+#include<cmath>
+```
+
+Used for:
+
+```cpp id="jlwm8m"
+abs()
+```
+
+---
+
+```cpp id="jlwm0w"
+#include<limits.h>
+```
+
+Provides:
+
+```text id="jlwm67"
+INT_MAX
+```
+
+largest integer.
+
+---
+
+# GLOBAL VARIABLE
+
+```cpp id="jlwm65"
+int g=0;
+```
+
+Tracks move cost.
+
+---
+
+# PRINT FUNCTION
+
+```cpp id="jlwm1i"
+void Print(int puzzle[])
+```
+
+Displays board.
+
+---
+
+# THIS CONDITION
+
+```cpp id="jlwm7w"
+if(i%3==0)
+```
+
+New row every 3 elements.
+
+---
+
+# WHY -1?
+
+Represents empty tile.
+
+---
+
+# MOVE FUNCTIONS
+
+```cpp id="jlwm8u"
+moveLeft()
+moveRight()
+moveUp()
+moveDown()
+```
+
+Swap blank tile.
+
+---
+
+# WHAT IS SWAP?
+
+Exchanges two values.
+
+Example:
+
+```text id="jlwm8n"
+A=1
+B=2
+
+swap
+
+A=2
+B=1
+```
+
+---
+
+# COPY FUNCTION
+
+```cpp id="jlwm8j"
+Copy(temp,start)
+```
+
+Copies array.
+
+Needed because:
+testing multiple moves.
+
+---
+
+# HEURISTIC FUNCTION
+
+MOST IMPORTANT.
+
+```cpp id="jlwm1z"
+heuristic(start,goal)
+```
+
+Computes:
+estimated distance.
+
+---
+
+# MANHATTAN DISTANCE
+
+Formula:
+
+|x_1-x_2|+|y_1-y_2|
+
+---
+
+# WHY MANHATTAN?
+
+Movement only:
+
+* left
+* right
+* up
+* down
+
+Not diagonal.
+
+---
+
+# A* FORMULA
+
+f(n)=g(n)+h(n)
+
+Where:
+
+* g(n) = actual cost
+* h(n) = heuristic cost
+
+---
+
+# MOVE TILE FUNCTION
+
+Tries:
+
+* left
+* right
+* up
+* down
+
+Chooses best heuristic.
+
+---
+
+# WHY INT_MAX?
+
+Invalid move should never become minimum.
+
+---
+
+# SOLVABLE FUNCTION
+
+Counts inversions.
+
+---
+
+# WHAT IS INVERSION?
+
+Example:
+
+```text id="jlwm9q"
+2 1
+```
+
+2 before 1.
+
+One inversion.
+
+---
+
+# RULE
+
+Even inversions:
+solvable.
+
+Odd inversions:
+unsolvable.
+
+---
+
+# RECURSION FLOW
+
+```text id="jlwm1f"
+move
+check
+move
+check
+```
+
+until goal achieved.
+
+---
+
+# APPLICATIONS
+
+1. Robotics
+2. Path planning
+3. GPS routing
+4. AI games
+
+---
+
+# WHAT IS HEURISTIC?
+
+Intelligent estimate guiding search.
+
+---
+
+# ADMISSIBLE HEURISTIC
+
+Never overestimates true cost.
+
+Manhattan distance is admissible.
+
+---
+
+# GREEDY SEARCH VS A*
+
+| Greedy         | A*               |
+| -------------- | ---------------- |
+| Only heuristic | Cost + heuristic |
+| Faster         | Better solution  |
