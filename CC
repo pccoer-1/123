@@ -1,0 +1,154 @@
+Practical 4: Design & Develop Custom Application using Salesforce
+Using Salesforce
+
+🔹 Step 1: Login to Salesforce
+Open browser
+Go to: https://login.salesforce.com
+Enter username & password
+Click Login
+🔹 Step 2: Open Setup
+On top right, click ⚙️ (Gear Icon)
+Click Setup
+🔹 Step 3: Create Custom Object
+In left search box, type Object Manager
+Click Object Manager
+Click Create → Custom Object
+Fill details:
+Label: Student
+Plural Label: Students
+Record Name: Student Name
+Click Save
+🔹 Step 4: Add Fields to Object
+Inside Student object → Click Fields & Relationships
+Click New
+Add these fields:
+👉 Field 1:
+
+Data Type: Text
+Field Name: Course
+👉 Field 2:
+
+Data Type: Number
+Field Name: Age
+👉 Field 3:
+
+Data Type: Email
+Field Name: Email
+Click Save after each field
+🔹 Step 5: Create Tab for Object
+Go to Setup → Tabs
+Click New (under Custom Object Tabs)
+Select Object: Student
+Choose Tab Style
+Click Next → Next → Save
+🔹 Step 6: Create Custom App
+In Setup search, type App Manager
+Click App Manager
+Click New Lightning App
+Fill details:
+App Name: Student Management App
+Description: Manage student records
+Click Next
+🔹 Step 7: Add Items (Tabs)
+Select Student tab
+Move it to Selected Items
+Click Next
+🔹 Step 8: Assign Profiles
+Select profiles (e.g., System Administrator)
+Click Next → Save
+🔹 Step 9: Open Your App
+Click App Launcher (9 dots icon)
+Search: Student Management App
+Open it
+🔹 Step 10: Add Records
+Click Student Tab
+Click New
+Enter:
+Name
+Course
+Age
+Email
+Click Save
+✅ Output
+Custom app created
+Student records stored and displayed
+
+On Wed, Apr 29, 2026 at 3:53 PM YASH SHASTRI <yash.shastri_comp23@pccoer.in> wrote:
+✅ Practical 3: Salesforce Apex Application (Final Correct Version)
+Using Salesforce
+
+🔹 Step 1: Open Developer Console
+Open browser
+Go to: https://login.salesforce.com
+Login
+Click ⚙️ (top right) → Developer Console
+🔹 Step 2: Create Apex Class
+Click File → New → Apex Class
+Enter name:
+AccountManager
+Click OK
+🔹 Step 3: Write Proper Working Code
+Delete default code and paste this:
+
+public class AccountManager {
+    
+    // Create Account
+    public static Account createAccount(String accName) {
+        Account acc = new Account(Name = accName);
+        insert acc;
+        System.debug('Created: ' + acc.Id);
+        return acc;
+    }
+    
+    // Get all Accounts
+    public static List<Account> getAccounts() {
+        return [SELECT Id, Name FROM Account];
+    }
+    
+    // Update Account
+    public static void updateAccount(Id accId, String newName) {
+        Account acc = [SELECT Id, Name FROM Account WHERE Id = :accId LIMIT 1];
+        acc.Name = newName;
+        update acc;
+        System.debug('Updated: ' + acc.Id);
+    }
+    
+    // Delete Account
+    public static void deleteAccount(Id accId) {
+        Account acc = [SELECT Id FROM Account WHERE Id = :accId LIMIT 1];
+        delete acc;
+        System.debug('Deleted: ' + acc.Id);
+    }
+}
+👉 Click Save (Ctrl + S)
+
+🔹 Step 4: Run Code (Execute Anonymous)
+Click Debug → Open Execute Anonymous Window
+Paste this FULL WORKING TEST CODE:
+// Step 1: Create Account
+Account acc = AccountManager.createAccount('Test Account');
+
+// Step 2: Display Accounts
+List<Account> accList = AccountManager.getAccounts();
+System.debug(accList);
+
+// Step 3: Update Account
+AccountManager.updateAccount(acc.Id, 'Updated Account');
+
+// Step 4: Delete Account (optional)
+// AccountManager.deleteAccount(acc.Id);
+Click Execute
+🔹 Step 5: Check Output
+Go to Logs tab (bottom)
+Open latest log
+You will see:
+Created: 001XXXXXXXXXXXX
+Updated: 001XXXXXXXXXXXX
+✅ What You Did (Write in Journal)
+Created Apex class: AccountManager
+Performed CRUD operations:
+Insert (Create)
+Select (Read using SOQL)
+Update
+Delete
+Used Execute Anonymous Window for testing
